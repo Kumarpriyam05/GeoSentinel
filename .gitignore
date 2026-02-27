@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+Thumbs.db
+*.log
+.env
+client/.env
+server/.env
+coverage
+.vscode

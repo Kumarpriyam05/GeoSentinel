@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --base-50: 248 250 252;
+  --base-100: 241 245 249;
+  --base-200: 226 232 240;
+  --base-300: 203 213 225;
+  --base-400: 148 163 184;
+  --base-500: 100 116 139;
+  --base-600: 71 85 105;
+  --base-700: 51 65 85;
+  --base-800: 30 41 59;
+  --base-900: 15 23 42;
+  --accent-400: 56 189 248;
+  --accent-500: 14 165 233;
+  --accent-600: 2 132 199;
+}
+
+.dark {
+  color-scheme: dark;
+  --base-50: 15 23 42;
+  --base-100: 17 27 51;
+  --base-200: 28 37 65;
+  --base-300: 44 56 86;
+  --base-400: 103 120 160;
+  --base-500: 148 163 184;
+  --base-600: 203 213 225;
+  --base-700: 226 232 240;
+  --base-800: 241 245 249;
+  --base-900: 248 250 252;
+  --accent-400: 34 211 238;
+  --accent-500: 6 182 212;
+  --accent-600: 8 145 178;
+}
+
+@layer base {
+  * {
+    @apply border-base-200;
+  }
+
+  html,
+  body,
+  #root {
+    @apply h-full;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-50 text-base-800 antialiased;
+    font-family: "Inter", sans-serif;
+    background-image:
+      radial-gradient(circle at 8% 12%, rgb(var(--accent-500) / 0.16), transparent 24%),
+      radial-gradient(circle at 84% 4%, rgb(var(--accent-500) / 0.12), transparent 34%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/15 bg-white/55 backdrop-blur-xl dark:border-white/10 dark:bg-white/5;
+  }
+
+  .btn-primary {
+    @apply rounded-xl bg-accent-500 px-4 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-accent-600 hover:shadow-glow;
+  }
+
+  .btn-secondary {
+    @apply rounded-xl border border-base-300/70 bg-base-100/80 px-4 py-2.5 text-sm font-semibold text-base-700 transition hover:border-accent-500/50 hover:text-accent-600 dark:bg-base-200/40 dark:text-base-700;
+  }
+
+  .input-base {
+    @apply w-full rounded-xl border border-base-300/70 bg-white/70 px-3.5 py-2.5 text-sm text-base-800 outline-none transition placeholder:text-base-500 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 dark:border-base-300/40 dark:bg-base-100/30 dark:text-base-800;
+  }
+
+  .card-base {
+    @apply glass rounded-2xl p-5 shadow-soft;
+  }
+}
+
+.geosentinel-marker {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid rgb(var(--base-50));
+  box-shadow: 0 0 0 3px rgb(var(--accent-500) / 0.3);
+}
+
+.geosentinel-marker.online {
+  background: rgb(16 185 129);
+}
+
+.geosentinel-marker.online::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 999px;
+  background: rgb(16 185 129 / 0.25);
+  animation: pulseSoft 1.9s ease-in-out infinite;
+}
+
+.geosentinel-marker.offline {
+  background: rgb(148 163 184);
+  box-shadow: 0 0 0 3px rgb(148 163 184 / 0.2);
+}
